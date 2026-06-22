@@ -1,0 +1,13 @@
+@use 'adminLayouts';
+@use 'adminDashboard';
+
+*{
+    top: 0;
+    bottom: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Instrument Sans', sans-serif;
+    background-color: #90beec;
+}

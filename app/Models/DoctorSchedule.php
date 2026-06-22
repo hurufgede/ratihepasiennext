@@ -9,7 +9,7 @@ class DoctorSchedule extends Model
     protected $fillable = [
         'doctor_id',
         'polyclinic_id',
-        'day_name',
+        'day',
         'start_time',
         'end_time',
         'quota',
