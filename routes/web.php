@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\Admin\AnnouncementController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\DashboardController;
 
 Route::prefix('admin')
     ->name('admin.')
