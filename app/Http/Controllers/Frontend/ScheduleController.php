@@ -9,7 +9,13 @@ class ScheduleController extends Controller
 {
     public function index()
     {
-        $schedules = DoctorSchedule::where('status', 'active')->get();
+        $schedules = DoctorSchedule::with([
+            'doctor',
+            'polyclinic',
+            'booking',
+        ])
+        ->where('status', 'active')
+        ->get();
 
         return view('frontend.schedules.index', compact('schedules'));
     }

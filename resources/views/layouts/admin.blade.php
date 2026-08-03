@@ -3,208 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Dashboard | RATIH ePASIEN-NEXT')</title>
+    <title>@yield('title', 'Dashboard | RATIH ePASIEN')</title>
     
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <style>
-        /* --- RESET & BASE STYLES --- */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #f8fafc; /* Slate 50 */
-            color: #0f172a; /* Slate 900 */
-            min-height: 100vh;
-        }
-
-        /* --- LAYOUT UTAMA --- */
-        .admin-container {
-            display: flex;
-            min-height: 100vh;
-            width: 100%;
-        }
-
-        /* --- SIDEBAR (Kiri) --- */
-        .sidebar {
-            width: 260px;
-            background-color: #0f172a; /* Slate 900 */
-            color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            border-right: 1px solid #1e293b;
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            z-index: 100;
-        }
-
-        .sidebar-brand {
-            height: 70px;
-            padding: 0 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            border-bottom: 1px solid #1e293b;
-            font-size: 1.15rem;
-            font-weight: 800;
-            letter-spacing: -0.025em;
-        }
-
-        .brand-logo {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, #4f46e5, #6366f1);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 0.875rem;
-        }
-
-        .sidebar-menu {
-            padding: 1.5rem 1rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 0.35rem;
-        }
-
-        .menu-link {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.75rem 1rem;
-            border-radius: 10px;
-            color: #94a3b8;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.875rem;
-            transition: all 0.2s ease;
-        }
-
-        .menu-link:hover {
-            background-color: #1e293b;
-            color: #ffffff;
-        }
-
-        .menu-link.active {
-            background-color: #4f46e5;
-            color: #ffffff;
-        }
-
-        /* --- MAIN WORKSPACE (Kanan) --- */
-        .main-workspace {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            min-width: 0; /* Mencegah flexbox memecah layout tabel */
-        }
-
-        /* --- HEADER --- */
-        .main-header {
-            height: 70px;
-            background-color: #ffffff;
-            border-bottom: 1px solid #e2e8f0;
-            padding: 0 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 90;
-        }
-
-        .header-left h1 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #0f172a;
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .user-profile {
-            width: 38px;
-            height: 38px;
-            background-color: #f1f5f9;
-            border-radius: 50%;
-            border: 2px solid #e2e8f0;
-            cursor: pointer;
-        }
-
-        /* --- AREA KONTEN UTAMA --- */
-        .main-content {
-            padding: 2rem;
-            flex: 1;
-        }
-
-        /* --- FOOTER --- */
-        .main-footer {
-            background-color: #ffffff;
-            border-top: 1px solid #e2e8f0;
-            padding: 1.25rem 2rem;
-            text-align: center;
-            font-size: 0.875rem;
-            color: #64748b;
-            font-weight: 500;
-        }
-
-        /* --- RESPONSIVE SIDEBAR --- */
-        @media (max-width: 768px) {
-            .sidebar {
-                display: none; /* Menyembunyikan sidebar di layar HP */
-            }
-            .main-header {
-                padding: 0 1rem;
-            }
-            .main-content {
-                padding: 1rem;
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            900: '#064e3b',
+                            accent: '#0d9488',
+                            secondary: '#0284c7'
+                        }
+                    }
+                }
             }
         }
-    </style>
+    </script>
 </head>
-<body>
+<body class="bg-slate-50 font-sans text-slate-900 antialiased min-h-screen">
 
-    <div class="admin-container">
-        <aside class="sidebar">
-            <div class="sidebar-brand">
-                <div class="brand-logo">R</div>
-                <span>ePASIEN-NEXT</span>
+    <div class="flex min-h-screen">
+        <aside class="w-64 bg-slate-900 text-white flex flex-col border-r border-slate-800 fixed inset-y-0 left-0 z-50 hidden md:flex">
+            <div class="h-16 px-6 flex items-center gap-3 border-b border-slate-800 font-extrabold text-lg tracking-tight">
+                <span>RATIH ePASIEN</span>
             </div>
-            <nav class="sidebar-menu">
-                <a href="{{ route('admin.dashboard') }}" class="menu-link active">📊 Dashboard</a>
-                <a href="{{ route('admin.services.index') }}" class="menu-link">🏥 Layanan</a>
-                <a href="{{ route('admin.polyclinics.index') }}" class="menu-link">🏥 Poliklinik</a>
-                <a href="{{ route('admin.doctors.index') }}" class="menu-link">👨‍⚕️ Data Dokter</a>
-                <a href="{{ route('admin.schedules.index') }}" class="menu-link">👨‍⚕️ Jadwal Dokter</a>
-                <a href="{{ route('admin.announcements.index') }}" class="menu-link">📢 Pengumuman</a>
-                <a href="{{ route('admin.settings.index') }}" class="menu-link">📢 Pengaturan</a>
+            
+            <nav class="p-4 flex-1 flex flex-col gap-1">
+                <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-brand-600 text-white transition-all shadow-md shadow-brand-600/20">
+                    <span>📊</span> Dashboard
+                </a>
+                <a href="{{ route('admin.services.index') }}" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-400 hover:bg-slate-800 hover:text-white transition-all">
+                    <span>💼</span> Layanan
+                </a>
+                <a href="{{ route('admin.polyclinics.index') }}" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-400 hover:bg-slate-800 hover:text-white transition-all">
+                    <span>🏥</span> Poliklinik
+                </a>
+                <a href="{{ route('admin.doctors.index') }}" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-400 hover:bg-slate-800 hover:text-white transition-all">
+                    <span>👨‍⚕️</span> Data Dokter
+                </a>
+                <a href="{{ route('admin.schedules.index') }}" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-400 hover:bg-slate-800 hover:text-white transition-all">
+                    <span>📅</span> Jadwal Dokter
+                </a>
+                <a href="{{ route('admin.announcements.index') }}" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-400 hover:bg-slate-800 hover:text-white transition-all">
+                    <span>📢</span> Pengumuman
+                </a>
+                <a href="{{ route('admin.settings.index') }}" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-400 hover:bg-slate-800 hover:text-white transition-all">
+                    <span>⚙️</span> Pengaturan
+                </a>
+                <form action="{{ route('logout') }}" method="POST" class="mt-auto">
+                    @csrf
+                    <button type="submit" class="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-400 hover:bg-slate-800 hover:text-white transition-all">
+                        <span>🚪</span> Logout
+                    </button>
+                </form>
             </nav>
         </aside>
 
-        <div class="main-workspace">
-            <header class="main-header">
-                <div class="header-left">
-                    <h1>@yield('title')</h1>
+        <div class="flex-1 md:pl-64 flex flex-col min-w-0">
+            <header class="h-16 bg-white border-b border-slate-200/80 px-6 flex items-center justify-between sticky top-0 z-40">
+                <div>
+                    <h1 class="text-base font-bold text-slate-900">@yield('title')</h1>
                 </div>
-                <div class="header-right">
-                    <div class="user-profile" title="Profil Admin"></div>
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-full bg-brand-50 border border-brand-200 cursor-pointer flex items-center justify-center text-xs font-bold text-brand-700 shadow-sm" title="Profil Admin">
+                        AD
+                    </div>
                 </div>
             </header>
 
-            <main class="main-content">
+            <main class="p-6 flex-1">
                 @yield('content')
             </main>
 
-            <footer class="main-footer">
+            <footer class="bg-white border-t border-slate-200/80 py-4 px-6 text-center text-xs text-slate-500 font-medium">
                 &copy; {{ date('Y') }} RATIH ePASIEN-NEXT. All rights reserved.
             </footer>
         </div>
